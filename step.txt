@@ -1,0 +1,93 @@
+1. Activate PostgreSQL server:
+    $ cd /etc/postgresql/11/main
+    $ psql
+
+2. Create 'lin_flask' database:
+    sridhar=#  CREATE DATABASE lin_flask;
+    sridhar=#  \l 
+    sridhar=#  \c lin_flask
+
+3. Create 'users' table on 'lin_flask' database:
+    lin_flask=#  CREATE TABLE users(
+                 id SERIAL PRIMARY KEY,
+                 name VARCHAR(255),
+                 age VARCAR(255)
+                 );
+    lin_flask=#  \d
+
+2. Create 'resource_management' database:
+    sridhar=#  CREATE DATABASE resource_management;
+    sridhar=#  \l 
+    sridhar=#  \c resource_management
+
+3. Create 'admin_user' table on 'resource_management' database:
+    resource_management=#  CREATE TABLE admin(
+                 id serial PRIMARY KEY,
+                 name VARCHAR(255),
+                 email VARCAR(255),
+                 password VARCAR(255),
+                 role VARCHAR(255),
+                 );
+    resource_management=#  \d
+
+4. Create 'skills' table on 'resource_management' database:
+    resource_management=#  CREATE TABLE skills(
+                 skill_id SERIAL PRIMARY KEY,
+                 skill_name VARCHAR(255),
+                 );
+    resource_management=#  \d
+
+5. Create 'employees' table on 'resource_management' database:
+    resource_management=#  CREATE TABLE employees(
+                 id serial,
+                 first_name VARCHAR(255),
+                 middle_name VARCHAR(255),
+                 last_name VARCHAR(255),
+                 department VARCAR(255),
+                 designation VARCAR(255),
+                 contact_number VARCAR(255),
+                 email VARCAR(255),
+                 PRIMARY KEY(id),
+                 FOREIGN KEY (id) REFERENCES admin(id)
+                 );
+    resource_management=#  \d
+
+6. Create 'projects' table on 'resource_management' database:
+    resource_management=#  CREATE TABLE projects(
+                id serial,
+                project_name VARCHAR(255),
+                start_date VARCHAR(255),
+                end_date VARCHAR(255),
+                is_active VARCAR(255),
+                project_description VARCAR(255)
+                PRIMARY KEY(id)
+
+                 );
+    resource_management=#  \d
+
+7. Create 'employee-skills' table on 'resource_management' database:
+    resource_management=#  CREATE TABLE employees_skills(
+                 skill_id SERIAL PRIMARY KEY,
+                 employee_id VARCHAR(255),
+                 rating VARCHAR(255),
+                 is_certified VARCHAR(255)
+                 );
+    resource_management=#  \d
+
+8. Create 'employee-projects' table on 'resource_management' database:
+    resource_management=#  CREATE TABLE employees_projects(
+                id serial,
+                project_id serial,
+                employee_id VARCHAR(255),
+                hours_per_day VARCHAR(255),
+                start_date VARCHAR(255),
+                end_date VARCHAR(),
+                PRIMARY KEY(id)
+                );
+    resource_management=#  \d
+
+
+
+4. run server
+    $ python app.py    
+                 
